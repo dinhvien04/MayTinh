@@ -1,26 +1,26 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Update Product</h1>
+<h1 class="h3 mb-4 text-gray-800">Cập nhật sản phẩm</h1>
 
 <form id="filter" >
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label>Category</label>
+            <label>Danh mục</label>
             <select class="form-control" id="editcat" name="Category" onchange="filter(this)">
                 <option value="laptop" >Laptop</option>
                 <option value="desktop" >Desktop</option>
-                <option value="casing" >Casing</option>
-                <option value="cooling" >Cooling</option>
-                <option value="graphics" >Graphics</option>
-                <option value="motherboard" >MotherBoard</option>
-                <option value="monitors" >Monitors</option>
-                <option value="power" >PowerSupply</option>
-                <option value="proccessor" >Processor</option>
+                <option value="casing" >Vỏ máy</option>
+                <option value="cooling" >Tản nhiệt</option>
+                <option value="graphics" >Card đồ họa</option>
+                <option value="motherboard" >Bo mạch chủ</option>
+                <option value="monitors" >Màn hình</option>
+                <option value="power" >Nguồn điện</option>
+                <option value="proccessor" >Bộ xử lý</option>
                 <option value="ram" >RAM</option>
-                <option value="storage" >Storage</option>
+                <option value="storage" >Lưu trữ</option>
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label>Brand</label>
+            <label>Thương hiệu</label>
             <select class="form-control" name="Brand">
             <?php
                 $brands = get_brands($link);
@@ -31,7 +31,7 @@
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label>limit</label>
+            <label>Giới hạn</label>
             <input type="number" class="form-control" name="limit">
             <input type="text" name="task" value="Update" hidden>
         </div>
@@ -40,18 +40,18 @@
 </form>
 
 <table class="table">
-    <caption>List of users</caption>
+    <caption>Danh sách người dùng</caption>
     <thead>
         <tr>
         <th scope="col">#</th>
-        <th scope="col">Name<h6>Spec1</h6></th>
-        <th scope="col">Brand<h6>Spec2</h6></th>
-        <th scope="col">Availability<h6>Spec3</h6></th>
-        <th scope="col">Quantity<h6>Spec4</h6></th>
-        <th scope="col">Price</th>
-        <th scope="col">About</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Update</th>
+        <th scope="col">Tên<h6>Thông số 1</h6></th>
+        <th scope="col">Thương hiệu<h6>Thông số 2</h6></th>
+        <th scope="col">Tình trạng<h6>Thông số 3</h6></th>
+        <th scope="col">Số lượng<h6>Thông số 4</h6></th>
+        <th scope="col">Giá</th>
+        <th scope="col">Giới thiệu</th>
+        <th scope="col">Chỉnh sửa</th>
+        <th scope="col">Cập nhật</th>
         </tr>
     </thead>
     <tbody id="TableBody">

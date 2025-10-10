@@ -1,30 +1,30 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Add Product</h1>
+<h1 class="h3 mb-4 text-gray-800">Thêm sản phẩm</h1>
 
 <form id="addProductForm" enctype="multipart/form-data">
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label>Category</label>
+            <label>Danh mục</label>
             <select class="form-control" name="Category" onchange="changeSpec(this);">
                 <option>Laptop</option>
                 <option>Desktop</option>
-                <option>Casing</option>
-                <option>Cooling</option>
-                <option>Graphics</option>
-                <option>MotherBoard</option>
-                <option>Monitors</option>
-                <option>PowerSupply</option>
-                <option>Processor</option>
+                <option>Vỏ máy</option>
+                <option>Tản nhiệt</option>
+                <option>Card đồ họa</option>
+                <option>Bo mạch chủ</option>
+                <option>Màn hình</option>
+                <option>Nguồn điện</option>
+                <option>Bộ xử lý</option>
                 <option>RAM</option>
-                <option>Storage</option>
+                <option>Lưu trữ</option>
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label>Price</label>
+            <label>Giá</label>
             <input type="number" class="form-control" name="Price">
         </div>
         <div class="form-group col-md-4">
-            <label>Brand</label>
+            <label>Thương hiệu</label>
             <select class="form-control" name="Brand">
                 <option>ASUS</option>
                 <option>ACER</option>
@@ -32,18 +32,18 @@
                 <option>G-SKILL</option>
                 <option>ADATA</option>
                 <option>GIGABYTE</option>
-                <option>Monitors</option>
+                <option>Màn hình</option>
             </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Name</label>
+        <label>Tên</label>
         <input type="text" class="form-control" name="Name">
     </div>
     <div class="form-row">
         <div class="form-group col-md-3">
-            <label id="spec1a">Processor</label>
+            <label id="spec1a">Bộ xử lý</label>
             <input id="spec1b" type="text" class="form-control" name="Spec1">
         </div>
         <div class="form-group col-md-3">
@@ -55,23 +55,23 @@
             <input id="spec3b" type="number" class="form-control" name="Spec3">
         </div>
         <div class="form-group col-md-3">
-            <label id="spec4a">Size</label>
+            <label id="spec4a">Kích thước</label>
             <input id="spec4b" type="number" class="form-control" name="Spec4">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Quantity</label>
+        <label>Số lượng</label>
         <input type="number" class="form-control" name="Quantity">
     </div>
     <div class="form-group">
-        <label>About</label>
+        <label>Giới thiệu</label>
         <textarea class="form-control" rows="5" name="About"></textarea>
         <input type="text" name="task" value="AddNew" hidden>
     </div>
     <div class="form-row">
         <div class="form-group col-md-3">
-            <label>Image</label>
+            <label>Hình ảnh</label>
             <input type="file" class="form-control-file" name="image" required onchange="readURL(this);">
         </div>
         <div class="form-group col-md-3">
@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="form-group">
-        <input type="submit" class="form-control-file" value="Add">
+        <input type="submit" class="form-control-file" value="Thêm">
     </div>
 </form>
 

@@ -46,10 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -57,64 +53,55 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <?php 
         if (isset($_GET['state']) && $_GET['state'] == "done") {
             echo '
-            swal("Reseted!", "Now you can log with new password!", "success");
+            swal("Đặt lại!", "Bây giờ bạn có thể đăng nhập bằng mật khẩu mới!", "success");
             ';
           }
         ?>
     </script>
-    <div class="container-fluid" >
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Đăng nhập VIEN Computers</h2>
+                        <p class="text-center">Vui lòng điền thông tin đăng nhập của bạn để đăng nhập.</p>
 
-                    <h2 style="padding-top: 40px;padding-bottom: 40px;">VIEN Computers Login</h2>
+                        <?php 
+                        if(!empty($login_err)){
+                            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                        }        
+                        ?>
+
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <div class="form-group">
+                                <label>Tài khoản</label>
+                                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                                <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                            </div>    
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-block" value="Đăng nhập">
+                            </div>
+                            <p class="text-center">Bạn chưa có tài khoản? <a href="register.php">Đăng kí ngay bây giờ</a><br>
+                            <span style="display: block; margin-top: 10px;">Quên mật khẩu? <a href="reset_password.php">Đặt lại mật khẩu</a></span>
+                        </p>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php'; ?>" class="btn btn-success">
+                        <i class="bi bi-arrow-left"></i> Quay lại
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-            <p>Vui lòng điền thông tin đăng nhập của bạn để đăng nhập .</p>
-
-<?php 
-if(!empty($login_err)){
-    echo '<div class="alert alert-danger">' . $login_err . '</div>';
-}        
-?>
-
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <div class="form-group">
-        <label>Tài khoản</label>
-        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
-        <span class="invalid-feedback"><?php echo $email_err; ?></span>
-    </div>    
-    <div class="form-group">
-        <label>Mật khẩu</label>
-        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-        <span class="invalid-feedback"><?php echo $password_err; ?></span>
     </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Login">
-    </div>
-    <p>Bạn chưa có tài khoản: <a href="register.php">Đăng kí ngay bây giờ</a><br>
-    <span style="display: block; margin-top: 10px;">Quên mật khẩu: <a href="reset_password.php">Đặt lại mật khẩu</a></span>
-</p>
 
-</div>
-<div class="col-md-4"></div>
-</div>
-<div class="row"></div>
-<div class="row">
-<div class="col-12">
-<br><br><br><br><br><br><br><br><br><br>
 
-<a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php'; ?>" class="btn btn-success">
-    <i class="bi bi-arrow-left"></i> Quay lại
-</a>
-<br><br><br><br><br><br><br><br>
-</div>
-</div>
-
-<?php include '../preset/footer.php';?>
-
-</div>
 </body>
 </html>

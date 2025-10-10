@@ -1,40 +1,40 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Settings</h1>
+<h1 class="h3 mb-4 text-gray-800">Cài đặt</h1>
 
-<h4>Update Password</h4>
+<h4>Cập nhật mật khẩu</h4>
 
 <form id="changePass"> 
     <div class="form-group">
-        <label>New Password</label>
+        <label>Mật khẩu mới</label>
         <input type="password" id="newPass" name="new_password" class="form-control" value="">
         <span id="snewPass" class=""></span>
     </div>
     <div class="form-group">
-        <label>Confirm Password</label>
+        <label>Xác nhận mật khẩu</label>
         <input type="password" id="confirmPass" name="confirm_password" class="form-control">
         <span id="sconfirmPass" class=""></span>
     </div>
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Change">
+        <input type="submit" class="btn btn-primary" value="Thay đổi">
     </div>
 </form>
 
-<h4>Update Name</h4>
+<h4>Cập nhật tên</h4>
 
 <form id="userUpdate" >
 
     <div class="form-group">
-    <label>First Name</label>
+    <label>Tên</label>
     <input type="text" class="form-control" name="FirstName"  required>
     </div>
 
     <div class="form-group">
-    <label>Last Name</label>
+    <label>Họ</label>
     <input type="text" class="form-control" name="LastName"  required>
     </div>
 
     <input type="text" hidden name="task" value="adminUpdate">
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
     
 </form>
 

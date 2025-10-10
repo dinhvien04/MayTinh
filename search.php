@@ -24,22 +24,22 @@ if (isset($_GET['query'])) {
 
     $result = $conn->query($sql);
 
-    // Hiển thị kết quả
-    if ($result->num_rows > 0) {
-        echo "<h2>Tìm kiếm:</h2>";
-        echo "<ul>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<li>";
-            echo "<strong>" . htmlspecialchars($row['Name']) . "</strong> - ";
-            echo "Category: " . htmlspecialchars($row['Category']) . ", ";
-            echo "Brand: " . htmlspecialchars($row['Brand']) . ", ";
-            echo "Price: $" . htmlspecialchars($row['Price']);
-            echo "</li>";
-        }
-        echo "</ul>";
-    } else {
-        echo "<p>No results found for '<strong>" . htmlspecialchars($query) . "</strong>'</p>";
-    }
+    // // Hiển thị kết quả
+    // if ($result->num_rows > 0) {
+    //     echo "<h2>Kết quả tìm kiếm:</h2>";
+    //     echo "<div class='row'>";
+    //     while ($row = $result->fetch_assoc()) {
+    //         echo "<div class='col-md-3'>";
+    //         echo "<img src='" . htmlspecialchars($row['Image']) . "' width='250px'><br>";
+    //         echo "<h5>" . htmlspecialchars($row['Name']) . "</h5>";
+    //         echo "<h6>" . number_format($row['Price'], 0, '', '.') . " VND</h6>";
+    //         echo "<a class='btn btn-info' href='preview.php?i=" . htmlspecialchars($row['ID']) . "&t=" . htmlspecialchars($row['Category']) . "'>Mua</a>";
+    //         echo "</div>";
+    //     }
+    //     echo "</div>";
+    // } else {
+    //     echo "<p>Không tìm thấy kết quả nào cho '<strong>" . htmlspecialchars($query) . "</strong>'</p>";
+    // }
 }
 
 $conn->close();
@@ -88,10 +88,61 @@ $conn->close();
           <?php include 'preset/mcarosal.php';?>
 
 
-          <h1>Tìm kiếm</h1>
-    <form action="search.php" method="get">
-        <input type="text" name="query" placeholder="Enter product name, brand, or category" required>
-        <button type="submit">Search</button>
+          <!-- <h1>Tìm kiếm</h1> -->
+          <!-- <form action="search.php" method="get">
+              <input type="text" name="query" placeholder="Nhập tên sản phẩm, thương hiệu hoặc danh mục" required>
+              <button type="submit">Tìm kiếm</button>
+          </form> -->
+
+          <div class="container">
+              <div class="row">
+                  <?php
+                  // Kết nối cơ sở dữ liệu
+                  $host = "localhost"; // Tên máy chủ
+                  $username = "root";  // Tên đăng nhập
+                  $password = "";      // Mật khẩu
+                  $dbname = "shop";    // Tên cơ sở dữ liệu
+
+                  $conn = new mysqli($host, $username, $password, $dbname);
+
+                  // Kiểm tra kết nối
+                  if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                  }
+
+                  // Kiểm tra nếu có từ khóa tìm kiếm
+                  if (isset($_GET['query'])) {
+                      $query = $conn->real_escape_string($_GET['query']); // Bảo vệ chống SQL Injection
+
+                      // Truy vấn tìm kiếm
+                      $sql = "SELECT * FROM products 
+                              WHERE Name LIKE '%$query%' 
+                              OR Brand LIKE '%$query%' 
+                              OR Category LIKE '%$query%'";
+
+                      $result = $conn->query($sql);
+
+                      // Hiển thị kết quả
+                      if ($result->num_rows > 0) {
+                          echo "<h2>Kết quả tìm kiếm:</h2>";
+                          while ($row = $result->fetch_assoc()) {
+                              echo "<div class='col-md-3'>";
+                              echo "<img src='" . htmlspecialchars($row['Image']) . "' width='250px'><br>";
+                              echo "<h5>" . htmlspecialchars($row['Name']) . "</h5>";
+                              echo "<h6>" . number_format($row['Price'], 0, '', '.') . " VND</h6>";
+                              echo "<a class='btn btn-info' href='preview.php?i=" . htmlspecialchars($row['ID']) . "&t=" . htmlspecialchars($row['Category']) . "'>Mua</a>";
+                              echo "</div>";
+                          }
+                      } else {
+                          echo "<p>Không tìm thấy kết quả nào cho '<strong>" . htmlspecialchars($query) . "</strong>'</p>";
+                      }
+                  }
+
+                  $conn->close();
+                  ?>
+              </div>
+          </div>
+
           <?php include 'preset/footer.php';?>
 
     </div>

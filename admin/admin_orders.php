@@ -1,19 +1,19 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Orders</h1>
+<h1 class="h3 mb-4 text-gray-800">Đơn hàng</h1>
 
 <div class="overflow-auto" style="height: 1000px;">
     <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">ItemName</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">UnitPrice</th>
-            <th scope="col">TotalAmount</th>
-            <th scope="col">Date & Time</th>
-            <th scope="col">Customer</th>
-            <th scope="col">DeliveryState</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Tổng tiền</th>
+            <th scope="col">Ngày & Giờ</th>
+            <th scope="col">Khách hàng</th>
+            <th scope="col">Trạng thái giao hàng</th>
             </tr>
         </thead>
         <tbody id="showtable">

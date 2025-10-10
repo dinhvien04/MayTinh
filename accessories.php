@@ -130,7 +130,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div class="row">
           <div class="col-3">
 
-            <h1><?php echo $accessories?></h1>  <!-- ==========CHANGE CAT=================================== -->
+            <h1><?php echo htmlspecialchars($accessories, ENT_QUOTES, 'UTF-8')?></h1>  <!-- ==========CHANGE CAT=================================== -->
             <hr>
 
 
@@ -138,73 +138,85 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <h3>Thương hiệu</h3> <!-- ==========CHANGE FIL 1=================================== -->
               <ul class="list-group">
               <?php
-                $sql="SELECT DISTINCT Brand FROM products WHERE Category='$accessories' ORDER BY Brand"; //<!-- ==========CHANGE SQL 1=================================== -->
-                $result = mysqli_query($link, $sql);
+                $sql = "SELECT DISTINCT Brand FROM products WHERE Category=? ORDER BY Brand";
+                $stmt = mysqli_prepare($link, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $accessories);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
                 if(mysqli_num_rows($result)>1){
                   while($row = mysqli_fetch_assoc($result)){
               ?>
                 <li class="list-group-item">
                   <div class="form-check">
                     <label for="form-check-lable">
-                      <input type="checkbox" class="form-chech-input product_check" value="<?=$row['Brand']; ?>" id="Filter1"><!-- ==========CHANGE VAL 1=================================== -->
-                      <?=$row['Brand']; ?><!-- ==========CHANGE VAL 1=================================== -->
+                      <input type="checkbox" class="form-chech-input product_check" value="<?=htmlspecialchars($row['Brand'], ENT_QUOTES, 'UTF-8'); ?>" id="Filter1"><!-- ==========CHANGE VAL 1=================================== -->
+                      <?=htmlspecialchars($row['Brand'], ENT_QUOTES, 'UTF-8'); ?><!-- ==========CHANGE VAL 1=================================== -->
                     </label>
                   </div>
                 </li>
               <?php } }?>
               </ul>
 <!-- *************************************************************************************************************************************** -->
-              <h3><?php echo $filter1?></h3>
+              <h3><?php echo htmlspecialchars($filter1, ENT_QUOTES, 'UTF-8')?></h3>
               <ul class="list-group">
               <?php
-                $sql="SELECT DISTINCT Spec1 AS Size FROM products WHERE Category='$accessories' ORDER BY Spec4";
-                $result = mysqli_query($link, $sql);
+                $sql = "SELECT DISTINCT Spec1 AS Size FROM products WHERE Category=? ORDER BY Spec4";
+                $stmt = mysqli_prepare($link, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $accessories);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
                 if(mysqli_num_rows($result)>1){
                   while($row = mysqli_fetch_assoc($result)){
               ?>
                 <li class="list-group-item">
                   <div class="form-check">
                     <label for="form-check-lable">
-                      <input type="checkbox" class="form-chech-input product_check" value="<?=$row['Size']; ?>" id="Filter2">
-                      <?=$row['Size']; ?>
+                      <input type="checkbox" class="form-chech-input product_check" value="<?=htmlspecialchars($row['Size'], ENT_QUOTES, 'UTF-8'); ?>" id="Filter2">
+                      <?=htmlspecialchars($row['Size'], ENT_QUOTES, 'UTF-8'); ?>
                     </label>
                   </div>
                 </li>
               <?php }} ?>
               </ul>
 <!-- *************************************************************************************************************************************** -->
-              <h3><?php echo $filter2?></h3>
+              <h3><?php echo htmlspecialchars($filter2, ENT_QUOTES, 'UTF-8')?></h3>
               <ul class="list-group">
               <?php
-                $sql="SELECT DISTINCT Spec2 AS RefreshRate FROM products WHERE Category='$accessories' ORDER BY Spec3";
-                $result = mysqli_query($link, $sql);
+                $sql = "SELECT DISTINCT Spec2 AS RefreshRate FROM products WHERE Category=? ORDER BY Spec3";
+                $stmt = mysqli_prepare($link, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $accessories);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
                 if(mysqli_num_rows($result)>1){
                   while($row = mysqli_fetch_assoc($result)){
               ?>
                 <li class="list-group-item">
                   <div class="form-check">
                     <label for="form-check-lable">
-                      <input type="checkbox" class="form-chech-input product_check" value="<?=$row['RefreshRate']; ?>" id="Filter3">
-                      <?=$row['RefreshRate']; ?>
+                      <input type="checkbox" class="form-chech-input product_check" value="<?=htmlspecialchars($row['RefreshRate'], ENT_QUOTES, 'UTF-8'); ?>" id="Filter3">
+                      <?=htmlspecialchars($row['RefreshRate'], ENT_QUOTES, 'UTF-8'); ?>
                     </label>
                   </div>
                 </li>
               <?php } }?>
               </ul>
 <!-- **************************************************************************************************************************************** -->
-              <h3><?php echo $filter3?></h3>
+              <h3><?php echo htmlspecialchars($filter3, ENT_QUOTES, 'UTF-8')?></h3>
               <ul class="list-group">
               <?php
-                $sql="SELECT DISTINCT Spec3 AS Resolution FROM products WHERE Category='$accessories' ORDER BY Spec1";
-                $result = mysqli_query($link, $sql);
+                $sql = "SELECT DISTINCT Spec3 AS Resolution FROM products WHERE Category=? ORDER BY Spec1";
+                $stmt = mysqli_prepare($link, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $accessories);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
                 if(mysqli_num_rows($result)>1){
                   while($row = mysqli_fetch_assoc($result)){
               ?>
                 <li class="list-group-item">
                   <div class="form-check">
                     <label for="form-check-lable">
-                      <input type="checkbox" class="form-chech-input product_check" value="<?=$row['Resolution']; ?>" id="Filter4">
-                      <?=$row['Resolution']; ?>
+                      <input type="checkbox" class="form-chech-input product_check" value="<?=htmlspecialchars($row['Resolution'], ENT_QUOTES, 'UTF-8'); ?>" id="Filter4">
+                      <?=htmlspecialchars($row['Resolution'], ENT_QUOTES, 'UTF-8'); ?>
                     </label>
                   </div>
                 </li>
@@ -215,21 +227,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- ********************************************************************************************************************************* -->
 
           <div class="col-9">
-              <h5 id="textChange">Tất cả <?php echo $accessories?></h5>
+              <h5 id="textChange">Tất cả <?php echo htmlspecialchars($accessories, ENT_QUOTES, 'UTF-8')?></h5>
               <div class="text-center">
                   <img src="image\loader.gif" id="loader" width="400px" style="display: none;">
               </div>
               <div class="row" id="result">
                   <?php
-                    $sql="SELECT Image,Name,Price,ID FROM products WHERE Category='$accessories' ORDER BY Spec3";
-                    $result = mysqli_query($link, $sql);
+                    $sql = "SELECT Image,Name,Price,ID FROM products WHERE Category=? ORDER BY Spec3";
+                    $stmt = mysqli_prepare($link, $sql);
+                    mysqli_stmt_bind_param($stmt, "s", $accessories);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
                     while($row = mysqli_fetch_assoc($result)){ 
                   ?>
                   <div class="col-md-3">
-                      <img src="<?= $row['Image']?>" width="250px"><br>
-                      <h5><?=$row['Name']?></h5>
+                      <img src="<?= htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8')?>" width="250px"><br>
+                      <h5><?=htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?></h5>
                       <h6><?php echo number_format($row['Price'], 0, '', '.') ?> VND</h6>
-                      <a class="btn btn-info" href="preview.php?i=<?=$row['ID']?>&t=<?php echo $accessories ?>">Mua</a>
+                      <a class="btn btn-info" href="preview.php?i=<?=htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>&t=<?php echo htmlspecialchars($accessories, ENT_QUOTES, 'UTF-8') ?>">Mua</a>
                   </div>
                   <?php } ?>
               </div>
@@ -254,7 +269,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           array2 = [];
           array3 = [];
           array4 = [];
-          Category = ["<?php echo $accessories ?>"];
+          Category = ["<?php echo htmlspecialchars($accessories, ENT_QUOTES, 'UTF-8') ?>"];
 
           arr_Filter1.forEach(pro_filter1);
           arr_Filter2.forEach(pro_filter2);

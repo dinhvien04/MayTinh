@@ -131,13 +131,11 @@ if(!$logediin){
           <div class="tab-pane fade show active" id="list-dashboard" role="tabpanel" aria-labelledby="list-dashboard-list">
               <?php
               require_once "database/config.php";
-                $sql = "SELECT FirstName, LastName,Propic, AddressLine1,AddressLine2, City, Phone FROM users where Email = '$_SESSION[email]';";
-                if($result = mysqli_query($link, $sql)) {
-                  echo "";
-                }
-                else{
-                    echo mysqli_error($link);
-                }
+                $sql = "SELECT FirstName, LastName,Propic, AddressLine1,AddressLine2, City, Phone FROM users where Email = ?;";
+                $stmt = mysqli_prepare($link, $sql);
+                mysqli_stmt_bind_param($stmt, "s", $_SESSION['email']);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
                 $userRow = mysqli_fetch_assoc($result);
               ?>
 
@@ -148,7 +146,7 @@ if(!$logediin){
                       </div>
                       <div style="width:80%;float:left;">
                         <h3>Welcome</h3>
-                        <h5> <?php echo $userRow["FirstName"]?> <?php echo $userRow["LastName"]?></h5>
+                        <h5> <?php echo htmlspecialchars($userRow["FirstName"], ENT_QUOTES, 'UTF-8')?> <?php echo htmlspecialchars($userRow["LastName"], ENT_QUOTES, 'UTF-8')?></h5>
                       </div>
                 </div>
                 <div class="row">
@@ -169,43 +167,43 @@ if(!$logediin){
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>First Name</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["FirstName"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["FirstName"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>Last Name</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["LastName"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["LastName"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>Email</h5></div>
-                          <div class="col-12"><h5><?php echo $_SESSION['email']; ?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8'); ?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>Address Line 1</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["AddressLine1"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["AddressLine1"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>Address Line 1</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["AddressLine2"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["AddressLine2"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>City</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["City"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["City"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
                           <div class="col-12 text-secondary"><h5>Phone</h5></div>
-                          <div class="col-12"><h5><?php echo $userRow["Phone"]?></h5></div>
+                          <div class="col-12"><h5><?php echo htmlspecialchars($userRow["Phone"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                     </ul>
@@ -217,33 +215,33 @@ if(!$logediin){
           <div class="tab-pane fade" id="list-cart" role="tabpanel" aria-labelledby="list-cart-list">
               <div style="width: 70%;float:left;padding:25px" id="list-cart-inside">
                           <?php 
-                            $sql = "SELECT products.Image, products.Price, products.Name, products.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN products ON cart.ProductID = products.ID where cart.CustomerEmail = '$_SESSION[email]'
+                            $sql = "SELECT products.Image, products.Price, products.Name, products.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN products ON cart.ProductID = products.ID where cart.CustomerEmail = ?
                                     UNION
-                                    SELECT custompc.Image, custompc.Price, custompc.Name, custompc.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN custompc ON cart.ProductID = custompc.ID where cart.CustomerEmail = '$_SESSION[email]';
-                                    ";
-
-                              $result = mysqli_query($link, $sql);
-                              //echo "why".mysqli_error($link);
+                                    SELECT custompc.Image, custompc.Price, custompc.Name, custompc.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN custompc ON cart.ProductID = custompc.ID where cart.CustomerEmail = ?;";
+                              $stmt = mysqli_prepare($link, $sql);
+                              mysqli_stmt_bind_param($stmt, "ss", $_SESSION['email'], $_SESSION['email']);
+                              mysqli_stmt_execute($stmt);
+                              $result = mysqli_stmt_get_result($stmt);
                               while($row = mysqli_fetch_assoc($result)){  ?> <!-- ==================================== -->
                         
                         <div class="row border shadow p-3 mb-3 bg-white rounded" >
                             <div class="col-3 bg-light">
-                                <img src="<?php echo $row['Image']?>" alt="" width="100%">
+                                <img src="<?php echo htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8')?>" alt="" width="100%">
                             </div>
                             <div class="col-6">
-                                <p class="card-text"><?php echo $row['Name']?></p><h6>Quantity 
-                                <select name="<?php echo $row['ID']?>" id="<?php echo $row['cart']?>" onchange="cartUpdate(this)" disabled>
-                                    <option value="<?php echo $row['Quantity']?>" disabled selected><?php echo $row['Quantity']?></option>
+                                <p class="card-text"><?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?></p><h6>Quantity 
+                                <select name="<?php echo htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>" id="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onchange="cartUpdate(this)" disabled>
+                                    <option value="<?php echo htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8')?>" disabled selected><?php echo htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8')?></option>
                                     <option value=1>1</option>
                                     <option value=2>2</option>
                                     <option value=3>3</option>
                                 </select>
-                                </h6><h5>RS:<?php echo $row['Price']?></h5>
+                                </h6><h5>RS:<?php echo htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8')?></h5>
                             </div>
                             <div class="col-3">
-                                <button type="button" class="btn btn-warning mb-2" value="<?php echo $row['cart']?>" onclick="cartEnable(this)">Edit</button><br>
-                                <button type="button" class="btn btn-danger mb-2" value="<?php echo $row['cart']?>" onclick="cartDelete(this)">Delete</button>
-                                <button type="button" class="btn btn-success mb-2" value="<?php echo $row['ID']?>&&<?php echo $row['Name']?>&&<?php echo $row['Price']?>&&<?php echo $row['cart']?>" onclick="cartBuy(this)">Proceed to Checkout</button>
+                                <button type="button" class="btn btn-warning mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartEnable(this)">Edit</button><br>
+                                <button type="button" class="btn btn-danger mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartDelete(this)">Delete</button>
+                                <button type="button" class="btn btn-success mb-2" value="<?php echo htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartBuy(this)">Proceed to Checkout</button>
                             </div>
                         </div>
                         
@@ -304,12 +302,12 @@ if(!$logediin){
                               document.getElementById("Cart_id").value=res[3];
                               document.getElementById("Quantity").value = document.getElementById(res[3]).value;
 
-                              var FirstName="<?php echo $userRow['FirstName']?>";
-                              var LastName="<?php echo $userRow['LastName']?>";
-                              var AddressLine1="<?php echo $userRow['AddressLine1']?>";
-                              var AddressLine2="<?php echo $userRow['AddressLine2']?>";
-                              var City="<?php echo $userRow['City']?>";
-                              var Phone="<?php echo $userRow['Phone']?>";
+                              var FirstName="<?php echo htmlspecialchars($userRow['FirstName'], ENT_QUOTES, 'UTF-8')?>";
+                              var LastName="<?php echo htmlspecialchars($userRow['LastName'], ENT_QUOTES, 'UTF-8')?>";
+                              var AddressLine1="<?php echo htmlspecialchars($userRow['AddressLine1'], ENT_QUOTES, 'UTF-8')?>";
+                              var AddressLine2="<?php echo htmlspecialchars($userRow['AddressLine2'], ENT_QUOTES, 'UTF-8')?>";
+                              var City="<?php echo htmlspecialchars($userRow['City'], ENT_QUOTES, 'UTF-8')?>";
+                              var Phone="<?php echo htmlspecialchars($userRow['Phone'], ENT_QUOTES, 'UTF-8')?>";
 
                               if(FirstName=="" || LastName=="" || AddressLine1=="" || AddressLine2=="" || City=="" || Phone==""){
                                 alert("Plz fill the Shipping deatiles");
@@ -366,12 +364,12 @@ if(!$logediin){
                         <input class="form-control-plaintext" type="text" id="Quantity" name="quantity_1" value="" hidden>  
                         <input class="form-control-plaintext" type="text" id="Cart_id" name="custom_1" value="" hidden>  
 
-                        <input class="form-control-plaintext" type="text" name="first_name" value="<?php echo $userRow['FirstName']?>" hidden>
-                        <input class="form-control-plaintext" type="text" name="last_name" value="<?php echo $userRow['LastName']?>" hidden>
-                        <input class="form-control-plaintext" type="text" name="email" value="<?php echo $_SESSION['email'] ?>" hidden>
-                        <input class="form-control-plaintext" type="text" name="phone" value="<?php echo $userRow['Phone']?>" hidden>
-                        <input class="form-control-plaintext" type="text" name="address" value="<?php echo $userRow['AddressLine1']?>" hidden>
-                        <input class="form-control-plaintext" type="text" name="city" value="<?php echo $userRow['City']?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="first_name" value="<?php echo htmlspecialchars($userRow['FirstName'], ENT_QUOTES, 'UTF-8')?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="last_name" value="<?php echo htmlspecialchars($userRow['LastName'], ENT_QUOTES, 'UTF-8')?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="email" value="<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8') ?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="phone" value="<?php echo htmlspecialchars($userRow['Phone'], ENT_QUOTES, 'UTF-8')?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="address" value="<?php echo htmlspecialchars($userRow['AddressLine1'], ENT_QUOTES, 'UTF-8')?>" hidden>
+                        <input class="form-control-plaintext" type="text" name="city" value="<?php echo htmlspecialchars($userRow['City'], ENT_QUOTES, 'UTF-8')?>" hidden>
                         <input class="form-control-plaintext" type="hidden" name="country" value="Sri Lanka" hidden><br><br>  
                       </form>
                   <!-- =============================================================================================================================== -->
@@ -445,26 +443,29 @@ if(!$logediin){
                   <tbody>
 
                   <?php 
-                    $sql = "SELECT orders.*, products.Image, products.Name FROM orders INNER JOIN products ON orders.ItemID = products.ID where orders.CustomerEmail = '$_SESSION[email]';";
+                    $sql = "SELECT orders.*, products.Image, products.Name FROM orders INNER JOIN products ON orders.ItemID = products.ID where orders.CustomerEmail = ?;";
+                    $stmt = mysqli_prepare($link, $sql);
+                    mysqli_stmt_bind_param($stmt, "s", $_SESSION['email']);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
 
-                    $sql2 = "SELECT orders.*, custompc.Name, custompc.CPU, custompc.MotherBoard, custompc.GPU, custompc.RAM, custompc.Cooling, custompc.Storage, custompc.Power, custompc.Casing, custompc.Image FROM orders INNER JOIN custompc ON orders.ItemID = custompc.ID where orders.CustomerEmail = '$_SESSION[email]';";
-
-                      $result = mysqli_query($link, $sql);
-                      echo mysqli_error($link);
-                      $result2 = mysqli_query($link, $sql2);
-                      echo mysqli_error($link);
+                    $sql2 = "SELECT orders.*, custompc.Name, custompc.CPU, custompc.MotherBoard, custompc.GPU, custompc.RAM, custompc.Cooling, custompc.Storage, custompc.Power, custompc.Casing, custompc.Image FROM orders INNER JOIN custompc ON orders.ItemID = custompc.ID where orders.CustomerEmail = ?;";
+                    $stmt2 = mysqli_prepare($link, $sql2);
+                    mysqli_stmt_bind_param($stmt2, "s", $_SESSION['email']);
+                    mysqli_stmt_execute($stmt2);
+                    $result2 = mysqli_stmt_get_result($stmt2);
 
 
                       while($row = mysqli_fetch_assoc($result)){  ?> 
 
                     <tr>
-                      <th scope="row"><?=$row['ID']; ?></th>
-                      <td><img src="<?=$row['Image']; ?>" alt="" height="50px"></td>
-                      <td><?=$row['Name']; ?></td>
-                      <td><?=$row['Quantity']; ?></td>
-                      <td><?php echo $row['TotalAmount']/$row['Quantity']; ?></td>
-                      <td><?=$row['TotalAmount']; ?></td>
-                      <td><?=$row['Date']; ?></td>
+                      <th scope="row"><?=htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8'); ?></th>
+                      <td><img src="<?=htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8'); ?>" alt="" height="50px"></td>
+                      <td><?=htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?=htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($row['TotalAmount']/$row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?=htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?=htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8'); ?></td>
                       <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Pending</span>";}else{echo "<span class='badge badge-success'>Delivered</span>";}  ?></td>
                     </tr>
                     
@@ -473,13 +474,13 @@ if(!$logediin){
                         while($row = mysqli_fetch_assoc($result2)){  ?> 
 
                     <tr>
-                      <th scope="row"><?=$row['ID']; ?></th>
-                      <td><img src="<?=$row['Image']; ?>" alt="" height="50px"></td>
-                      <td><?php echo $row['Name'];echo "<br><i>".$row['CPU'];echo "<br>".$row['RAM'];echo "<br>".$row['Cooling'];echo "<br>".$row['Storage'];echo "<br>".$row['Power'];echo "<br>".$row['Casing']."</i>"; ?></td>
-                      <td><?=$row['Quantity']; ?></td>
-                      <td><?php echo $row['TotalAmount']/$row['Quantity']; ?></td>
-                      <td><?=$row['TotalAmount']; ?></td>
-                      <td><?=$row['Date']; ?></td>
+                      <th scope="row"><?=htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8'); ?></th>
+                      <td><img src="<?=htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8'); ?>" alt="" height="50px"></td>
+                      <td><?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8');echo "<br><i>".htmlspecialchars($row['CPU'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['RAM'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Cooling'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Storage'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Power'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Casing'], ENT_QUOTES, 'UTF-8')."</i>"; ?></td>
+                      <td><?=htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($row['TotalAmount']/$row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?=htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?=htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8'); ?></td>
                       <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Pending</span>";}else{echo "<span class='badge badge-success'>Delivered</span>";}  ?></td>
                     </tr>
 

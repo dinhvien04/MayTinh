@@ -202,16 +202,16 @@ function get_products($link, $category, $brand, $limit) {
         $output .= '                            
         <tr>
         <th scope="row">'.$number.'<hr><h6>Specs</h6></th>
-    <form id="'.$row['ID'].'">
-        <th scope="col"                      >      <input      class="form-control '.$row['ID'].'" type="text" name="Name" value="'.$row['Name'].'"         style="pointer-events: none;"><input class="form-control '.$row['ID'].'" type="text" name="Spec1" value="'.$row['Spec1'].'" style="pointer-events: none;margin-top:10px;"></th>
-        <th style="width: 100px;" scope="col">      <input      class="form-control '.$row['ID'].'" type="text" name="Brand" value="'.$row['Brand'].'"        style="pointer-events: none;"><input class="form-control '.$row['ID'].'" type="text" name="Spec2" value="'.$row['Spec2'].'" style="pointer-events: none;margin-top:10px;"></th>
-        <th style="width: 50px;" scope="col" >      <input      class="form-control '.$row['ID'].'" type="text" name="Availability" value="'.$row['Availability'].'" style="pointer-events: none;"><input class="form-control '.$row['ID'].'" type="text" name="Spec3" value="'.$row['Spec3'].'" style="pointer-events: none;margin-top:10px;"></th>
-        <th style="width: 50px;" scope="col" >      <input      class="form-control '.$row['ID'].'" type="text" name="Quantity" value="'.$row['Quantity'].'"     style="pointer-events: none;"><input class="form-control '.$row['ID'].'" type="text" name="Spec4" value="'.$row['Spec4'].'" style="pointer-events: none;margin-top:10px;"></th>
-        <th style="width: 50px;" scope="col" >      <input      class="form-control '.$row['ID'].'" type="text" name="Price" value="'.$row['Price'].'"        style="pointer-events: none;"></th>
-        <th scope="col"                      >      <textarea   class="form-control '.$row['ID'].'" rows="4"    name="About"  cols="50"                    style="pointer-events: none;">'.$row['About'].'</textarea></th>
+    <form id="'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'">
+        <th scope="col"                      >      <input      class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Name" value="'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'"         style="pointer-events: none;"><input class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Spec1" value="'.htmlspecialchars($row['Spec1'], ENT_QUOTES, 'UTF-8').'" style="pointer-events: none;margin-top:10px;"></th>
+        <th style="width: 100px;" scope="col">      <input      class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Brand" value="'.htmlspecialchars($row['Brand'], ENT_QUOTES, 'UTF-8').'"        style="pointer-events: none;"><input class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Spec2" value="'.htmlspecialchars($row['Spec2'], ENT_QUOTES, 'UTF-8').'" style="pointer-events: none;margin-top:10px;"></th>
+        <th style="width: 50px;" scope="col" >      <input      class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Availability" value="'.htmlspecialchars($row['Availability'], ENT_QUOTES, 'UTF-8').'" style="pointer-events: none;"><input class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Spec3" value="'.htmlspecialchars($row['Spec3'], ENT_QUOTES, 'UTF-8').'" style="pointer-events: none;margin-top:10px;"></th>
+        <th style="width: 50px;" scope="col" >      <input      class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Quantity" value="'.htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8').'"     style="pointer-events: none;"><input class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Spec4" value="'.htmlspecialchars($row['Spec4'], ENT_QUOTES, 'UTF-8').'" style="pointer-events: none;margin-top:10px;"></th>
+        <th style="width: 50px;" scope="col" >      <input      class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" type="text" name="Price" value="'.htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8').'"        style="pointer-events: none;"></th>
+        <th scope="col"                      >      <textarea   class="form-control '.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" rows="4"    name="About"  cols="50"                    style="pointer-events: none;">'.htmlspecialchars($row['About'], ENT_QUOTES, 'UTF-8').'</textarea></th>
     </form>
-        <th scope="col"                      >      <button onclick="table(\''.$row['ID'].'\')">Edit</button></th>
-        <th scope="col"                      >      <button class="'.$row['ID'].'" onclick="submitForm(\''.$row['ID'].'\')" style="pointer-events: none;">Update</button></th>
+        <th scope="col"                      >      <button onclick="table(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Edit</button></th>
+        <th scope="col"                      >      <button class="'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'" onclick="submitForm(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')" style="pointer-events: none;">Update</button></th>
     </tr>
         
         ';
@@ -257,15 +257,15 @@ function get_orders($link) {
         if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Pending</span>";}else{$show = "<span class='badge badge-success'>Delivered</span>";}
         $output.='
                 <tr>
-                <th scope="row">'.$row['ID'].'</th>
-                <td><img src="'.$row['Image'].'" alt="" height="50px"></td>
-                <td>'.$row['Name'].'</td>
-                <td>'.$row['Quantity'].'</td>
-                <td>'.($row['TotalAmount']/$row['Quantity']) .'</td>
-                <td>'.$row['TotalAmount'].'</td>
-                <td>'.$row['Date'].'</td>
-                <td onclick="userinformation(\''.$row['CustomerEmail'].'\')">'.$row['CustomerEmail'].'</td>
-                <td>'.$show.'<button onclick="delivery(\''.$row['ID'].'\')">Delivered</button></td>
+                <th scope="row">'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'</th>
+                <td><img src="'.htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8').'" alt="" height="50px"></td>
+                <td>'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars(($row['TotalAmount']/$row['Quantity']), ENT_QUOTES, 'UTF-8') .'</td>
+                <td>'.htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8').'</td>
+                <td onclick="userinformation(\''.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'\')">'.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Delivered</button></td>
                 </tr>
                 ';
     } 
@@ -274,15 +274,15 @@ function get_orders($link) {
             if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Pending</span>";}else{$show = "<span class='badge badge-success'>Delivered</span>";}
             $output.='
                 <tr>
-                <th scope="row">'.$row['ID'].'</th>
-                <td><img src="'.$row['Image'].'" alt="" height="50px"></td>
-                <td>'.$row['Name'].'"<br><i>"'.$row['CPU'].' "<br>"'.$row['RAM'].' "<br>"'.$row['Cooling'].' "<br>"'.$row['Storage'].' "<br>"'.$row['Power'].' "<br>"'.$row['Casing']."</i>".'</td>
-                <td>'.$row['Quantity'].'</td>
-                <td>'.($row['TotalAmount']/$row['Quantity']).'</td>
-                <td>'.$row['TotalAmount'].'</td>
-                <td>'.$row['Date'].'</td>
-                <td onclick="userinformation(\''.$row['CustomerEmail'].'\')">'.$row['CustomerEmail'].'</td>
-                <td>'.$show.'<button onclick="delivery(\''.$row['ID'].'\')">Delivered</button></td>
+                <th scope="row">'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'</th>
+                <td><img src="'.htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8').'" alt="" height="50px"></td>
+                <td>'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'"<br><i>"'.htmlspecialchars($row['CPU'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['RAM'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Cooling'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Storage'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Power'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Casing'], ENT_QUOTES, 'UTF-8')."</i>".'</td>
+                <td>'.htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars(($row['TotalAmount']/$row['Quantity']), ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8').'</td>
+                <td onclick="userinformation(\''.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'\')">'.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'</td>
+                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Delivered</button></td>
                 </tr>
             ';
     } 
@@ -298,13 +298,13 @@ function get_customer_info($link, $email) {
     $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
 
-    $output = $row['FirstName']."<hr>";
-    $output .= $row['LastName']."<hr>";
-    $output .= $row['Email']."<hr>";
-    $output .= $row['AddressLine1']."<hr>";
-    $output .= $row['AddressLine2']."<hr>";
-    $output .= $row['City']."<hr>";
-    $output .= $row['Phone']."<hr>";
+    $output = htmlspecialchars($row['FirstName'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['LastName'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['Email'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['AddressLine1'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['AddressLine2'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['City'], ENT_QUOTES, 'UTF-8')."<hr>";
+    $output .= htmlspecialchars($row['Phone'], ENT_QUOTES, 'UTF-8')."<hr>";
 
     return $output;
 }

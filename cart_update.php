@@ -23,16 +23,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         //============================================================================DELETE=============================================================================
                         $CartID = $_POST['ID'];
             
-                        $sql = "DELETE FROM cart WHERE ID = $CartID";
-                        mysqli_query($link, $sql);
+                        $sql = "DELETE FROM cart WHERE ID = ?";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "i", $CartID);
+                        mysqli_stmt_execute($stmt);
                         echo mysqli_error($link);
         
-                        $sql = "SELECT products.Image, products.Price, products.Name, products.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN products ON cart.ProductID = products.ID where cart.CustomerEmail = '$_SESSION[email]'
+                        $sql = "SELECT products.Image, products.Price, products.Name, products.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN products ON cart.ProductID = products.ID where cart.CustomerEmail = ?
                         UNION
-                        SELECT custompc.Image, custompc.Price, custompc.Name, custompc.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN custompc ON cart.ProductID = custompc.ID where cart.CustomerEmail = '$_SESSION[email]';
-                        ";
-
-                        $result = mysqli_query($link, $sql);
+                        SELECT custompc.Image, custompc.Price, custompc.Name, custompc.ID, cart.Quantity, cart.ID AS cart FROM cart INNER JOIN custompc ON cart.ProductID = custompc.ID where cart.CustomerEmail = ?;";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "ss", $_SESSION['email'], $_SESSION['email']);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
                     
                         if($result = mysqli_query($link, $sql)) {
                             if(mysqli_num_rows($result)>0){
@@ -75,9 +78,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                       //============================================================================DELETE=============================================================================
                         $quantity = $_POST["quantity"];
                         $productID = $_POST["ID"];
-                        $sql = "UPDATE cart SET Quantity='$quantity' WHERE CustomerEmail='$_SESSION[email]' AND ProductID='$productID' ; ";
-                
-                        if(mysqli_query($link, $sql)) {
+                        $sql = "UPDATE cart SET Quantity=? WHERE CustomerEmail=? AND ProductID=? ; ";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "iss", $quantity, $_SESSION['email'], $productID);
+
+                        if(mysqli_stmt_execute($stmt)) {
                             echo "Successfully Updated";
                         }
                         else{
@@ -91,10 +96,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $city = $_POST['city'];
                         $phone = $_POST['phone'];
 
-                
-                        $sql = "UPDATE users SET AddressLine1='$address',AddressLine2='$address2', City='$city', Phone=$phone WHERE Email='$_SESSION[email]'";
-                
-                        if(mysqli_query($link, $sql)) {
+                        $sql = "UPDATE users SET AddressLine1=?,AddressLine2=?, City=?, Phone=? WHERE Email=?";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "sssss", $address, $address2, $city, $phone, $_SESSION['email']);
+
+                        if(mysqli_stmt_execute($stmt)) {
                             echo "Updated successfully";
                         }
                         else{

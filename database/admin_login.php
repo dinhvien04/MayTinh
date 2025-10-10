@@ -3,8 +3,8 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ../admin.php");
+if(isset($_SESSION["ADMINloggedin"]) && $_SESSION["ADMINloggedin"] === true){
+    header("location: ../admin/admin_dashboard.php");
     exit;
 }
  
@@ -56,7 +56,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
-                            session_start();
                             
                             // Store data in session variables
                             $_SESSION["ADMINloggedin"] = true;
@@ -64,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["ADMINusername"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: ../admin.php");
+                            header("location: ../admin/admin_dashboard.php");
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -87,46 +86,50 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 
-echo mysqli_connect_error();
 ?>
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Đăng nhập quản trị</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Admin Login</h2>
-        <p>Please fill in your credentials to login.</p>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Đăng nhập quản trị</h2>
+                        <p class="text-center">Vui lòng điền thông tin đăng nhập của bạn.</p>
 
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
+                        <?php 
+                        if(!empty($login_err)){
+                            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                        }        
+                        ?>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <div class="form-group">
+                                <label>Tên người dùng</label>
+                                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                                <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                            </div>    
+                            <div class="form-group">
+                                <label>Mật khẩu</label>
+                                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-block" value="Đăng nhập">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>

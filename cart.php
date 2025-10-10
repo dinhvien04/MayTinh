@@ -23,9 +23,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $ProductName = $_POST['ProductName'];
                         $CustomerEmail = $_SESSION["email"];
                     
-                        $sql = "INSERT INTO cart (CustomerEmail, ProductID, ProductName, Quantity) VALUES ('$CustomerEmail','$ProductID','$ProductName',$Quantity)";
-                    
-                        if(mysqli_query($link, $sql)) {
+                        $sql = "INSERT INTO cart (CustomerEmail, ProductID, ProductName, Quantity) VALUES (?, ?, ?, ?)";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "sssi", $CustomerEmail, $ProductID, $ProductName, $Quantity);
+
+                        if(mysqli_stmt_execute($stmt)) {
                             echo "ok";
                         }
                         else{
@@ -55,10 +57,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $Power = $_POST['power'];
                         $Casing = $_POST['casing'];
                     
-                        $sql = "INSERT INTO custompc (CustomerEmail, Price,CPU,MotherBoard,GPU,Storage,RAM,Cooling,Power,Casing,About) VALUES 
-                        ('$CustomerEmail',$Price,'$CPU','$MotherBoard','$GPU','$Storage','$RAM','$Cooling','$Power','$Casing','later')";
-                    
-                        if(mysqli_query($link, $sql)) {
+                        $sql = "INSERT INTO custompc (CustomerEmail, Price,CPU,MotherBoard,GPU,Storage,RAM,Cooling,Power,Casing,About) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'later')";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "sdssssssss", $CustomerEmail, $Price, $CPU, $MotherBoard, $GPU, $Storage, $RAM, $Cooling, $Power, $Casing);
+
+                        if(mysqli_stmt_execute($stmt)) {
                             echo "ok";
                         }
                         else{
@@ -71,9 +74,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $ID=$row['ID'];
 
 
-                        $sql = "INSERT INTO cart (CustomerEmail, ProductID, ProductName, Quantity) VALUES ('$CustomerEmail','$ID','CustomPC',1)";
-                    
-                        if(mysqli_query($link, $sql)) {
+                        $sql = "INSERT INTO cart (CustomerEmail, ProductID, ProductName, Quantity) VALUES (?, ?, 'CustomPC', 1)";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "ss", $CustomerEmail, $ID);
+
+                        if(mysqli_stmt_execute($stmt)) {
                             header('Location: account.php');
                         }
                         else{

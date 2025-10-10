@@ -48,8 +48,11 @@ function register_user($link, $post_data, $files) {
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
             $check = getimagesize($files["image"]["tmp_name"]);
-            if($check === false) {
-                return "File is not an image.";
+            $mime_type = mime_content_type($files["image"]["tmp_name"]);
+            $allowed_mime_types = ['image/jpeg', 'image/png', 'image/gif'];
+
+            if($check === false || !in_array($mime_type, $allowed_mime_types)) {
+                return "File is not a valid image.";
             }
 
             if ($files["image"]["size"] > 500000) {
