@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         mysqli_stmt_execute($stmt);
                         $result = mysqli_stmt_get_result($stmt);
                     
-                        if($result = mysqli_query($link, $sql)) {
+                        if($result){
                             if(mysqli_num_rows($result)>0){
                                 $output = '';
                                 while($row = mysqli_fetch_assoc($result)){
@@ -99,6 +99,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $sql = "UPDATE users SET AddressLine1=?,AddressLine2=?, City=?, Phone=? WHERE Email=?";
                         $stmt = mysqli_prepare($link, $sql);
                         mysqli_stmt_bind_param($stmt, "sssss", $address, $address2, $city, $phone, $_SESSION['email']);
+
+                        if(mysqli_stmt_execute($stmt)) {
+                            echo "Updated successfully";
+                        }
+                        else{
+                            echo mysqli_error($link);
+                        }
+                    break;
+                    case 'updateName':
+                        $fname = $_POST['fname'];
+                        $lname = $_POST['lname'];
+
+                        $sql = "UPDATE users SET FirstName=?, LastName=? WHERE Email=?";
+                        $stmt = mysqli_prepare($link, $sql);
+                        mysqli_stmt_bind_param($stmt, "sss", $fname, $lname, $_SESSION['email']);
 
                         if(mysqli_stmt_execute($stmt)) {
                             echo "Updated successfully";

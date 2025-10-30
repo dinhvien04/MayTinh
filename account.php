@@ -69,7 +69,7 @@ if(!$logediin){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <title>Horizon Computers</title>
+  <title>Vien Computers</title>
 </head>
 <body>
     <!-- Optional JavaScript -->
@@ -91,14 +91,14 @@ if(!$logediin){
                               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
                               <div class="list-group mobile" id="list-tab" role="tablist">
-                                <a class="list-group-item list-group-item-action" id="list-dashboard-list" data-toggle="list" href="#list-dashboard" role="tab" aria-controls="home"><img src="assets/svg/cart.svg" width="30px">Dashboard</a>
-                                <a class="list-group-item list-group-item-action" id="list-cart-list" data-toggle="list" href="#list-cart" role="tab" aria-controls="profile">Cart</a>
-                                <a class="list-group-item list-group-item-action" id="list-security-list" data-toggle="list" href="#list-security" role="tab" aria-controls="messages">Security</a>
-                                <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="settings">orders</a>
-                                <a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="home"><img src="assets/svg/cart.svg" width="30px">History</a>
-                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Massages</a>
-                                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                                <a class="list-group-item list-group-item-action" id="list-dashboard-list" data-toggle="list" href="#list-dashboard" role="tab" aria-controls="home"><img src="assets/svg/cart.svg" width="30px">Bảng điều khiển</a>
+                                <a class="list-group-item list-group-item-action" id="list-cart-list" data-toggle="list" href="#list-cart" role="tab" aria-controls="profile">Giỏ hàng</a>
+                                <a class="list-group-item list-group-item-action" id="list-security-list" data-toggle="list" href="#list-security" role="tab" aria-controls="messages">Bảo mật</a>
+                                <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="settings">Đơn hàng</a>
+                                <a class="list-group-item list-group-item-action" id="list-history-list" data-toggle="list" href="#list-history" role="tab" aria-controls="home"><img src="assets/svg/cart.svg" width="30px">Lịch sử</a>
+                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Hồ sơ</a>
+                                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Tin nhắn</a>
+                                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Cài đặt</a>
                               </div><br>
      
                             </div>
@@ -116,12 +116,12 @@ if(!$logediin){
 
       <div class="col-md-2"><br>
           <div class="list-group desktop" id="list-tab" role="tablist">
-          <a class="list-group-item list-group-item-action" id="list-dashboard-list" data-toggle="list" href="#list-dashboard" role="tab" aria-controls="home"><img class="mr-3" src="assets/svg/card-checklist.svg" width="30px">Dashboard</a>
-          <a class="list-group-item list-group-item-action" id="list-cart-list" data-toggle="list" href="#list-cart" role="tab" aria-controls="profile"><img class="mr-3" src="assets/svg/cart.svg" width="30px">Cart</a>
-          <a class="list-group-item list-group-item-action" id="list-shipping-list" data-toggle="list" href="#list-shipping" role="tab" aria-controls="shipping"><img class="mr-3" src="assets/svg/truck.svg" width="30px">Shipping</a>
-          <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="settings"><img class="mr-3" src="assets/svg/box-seam.svg" width="30px">orders</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages"><img class="mr-3" src="assets/svg/chat-quote.svg" width="30px">Massages</a>
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><img class="mr-3" src="assets/svg/gear.svg" width="30px">Settings</a>
+          <a class="list-group-item list-group-item-action" id="list-dashboard-list" data-toggle="list" href="#list-dashboard" role="tab" aria-controls="home"><img class="mr-3" src="assets/svg/card-checklist.svg" width="30px">Bảng điều khiển</a>
+          <a class="list-group-item list-group-item-action" id="list-cart-list" data-toggle="list" href="#list-cart" role="tab" aria-controls="profile"><img class="mr-3" src="assets/svg/cart.svg" width="30px">Giỏ hàng</a>
+          <a class="list-group-item list-group-item-action" id="list-shipping-list" data-toggle="list" href="#list-shipping" role="tab" aria-controls="shipping"><img class="mr-3" src="assets/svg/truck.svg" width="30px">Giao hàng</a>
+          <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list" href="#list-orders" role="tab" aria-controls="settings"><img class="mr-3" src="assets/svg/box-seam.svg" width="30px">Đơn hàng</a>
+          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages"><img class="mr-3" src="assets/svg/chat-quote.svg" width="30px">Tin nhắn</a>
+          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><img class="mr-3" src="assets/svg/gear.svg" width="30px">Cài đặt</a>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br>
       </div>
@@ -145,7 +145,7 @@ if(!$logediin){
                         <img class="rounded-circle" src="<?php echo $userRow["Propic"]?>" alt="" width="200px" height="200px">
                       </div>
                       <div style="width:80%;float:left;">
-                        <h3>Welcome</h3>
+                        <h3>Chào mừng</h3>
                         <h5> <?php echo htmlspecialchars($userRow["FirstName"], ENT_QUOTES, 'UTF-8')?> <?php echo htmlspecialchars($userRow["LastName"], ENT_QUOTES, 'UTF-8')?></h5>
                       </div>
                 </div>
@@ -158,7 +158,7 @@ if(!$logediin){
                               <h1><i class="bi bi-person-lines-fill"></i></h1>
                             </div>
                             <div class="col-10" style="padding-top: 10px;">
-                              <h5>Customer Profile</h5>
+                              <h5>Hồ sơ khách hàng</h5>
                             </div>
                             <div class="col-12"><hr></div>
                           </div>
@@ -166,13 +166,13 @@ if(!$logediin){
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>First Name</h5></div>
+                          <div class="col-12 text-secondary"><h5>Tên</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["FirstName"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>Last Name</h5></div>
+                          <div class="col-12 text-secondary"><h5>Họ</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["LastName"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
@@ -184,25 +184,25 @@ if(!$logediin){
                       </li>
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>Address Line 1</h5></div>
+                          <div class="col-12 text-secondary"><h5>Địa chỉ 1</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["AddressLine1"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>Address Line 1</h5></div>
+                          <div class="col-12 text-secondary"><h5>Địa chỉ 2</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["AddressLine2"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>City</h5></div>
+                          <div class="col-12 text-secondary"><h5>Thành phố</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["City"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
                       <li class="list-group-item">
                         <div class="row">
-                          <div class="col-12 text-secondary"><h5>Phone</h5></div>
+                          <div class="col-12 text-secondary"><h5>Điện thoại</h5></div>
                           <div class="col-12"><h5><?php echo htmlspecialchars($userRow["Phone"], ENT_QUOTES, 'UTF-8')?></h5></div>
                         </div>
                       </li>
@@ -229,19 +229,19 @@ if(!$logediin){
                                 <img src="<?php echo htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8')?>" alt="" width="100%">
                             </div>
                             <div class="col-6">
-                                <p class="card-text"><?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?></p><h6>Quantity 
+                                <p class="card-text"><?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?></p><h6>Số lượng 
                                 <select name="<?php echo htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>" id="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onchange="cartUpdate(this)" disabled>
                                     <option value="<?php echo htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8')?>" disabled selected><?php echo htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8')?></option>
                                     <option value=1>1</option>
                                     <option value=2>2</option>
                                     <option value=3>3</option>
                                 </select>
-                                </h6><h5>RS:<?php echo htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8')?></h5>
+                                </h6><h5><?php echo number_format($row['Price'], 0, '', '.') ?> VND</h5>
                             </div>
                             <div class="col-3">
-                                <button type="button" class="btn btn-warning mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartEnable(this)">Edit</button><br>
-                                <button type="button" class="btn btn-danger mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartDelete(this)">Delete</button>
-                                <button type="button" class="btn btn-success mb-2" value="<?php echo htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartBuy(this)">Proceed to Checkout</button>
+                                <button type="button" class="btn btn-warning mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartEnable(this)">Chỉnh sửa</button><br>
+                                <button type="button" class="btn btn-danger mb-2" value="<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartDelete(this)">Xóa</button>
+                                <button type="button" class="btn btn-success mb-2" value="<?php echo htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['Price'], ENT_QUOTES, 'UTF-8')?>&&<?php echo htmlspecialchars($row['cart'], ENT_QUOTES, 'UTF-8')?>" onclick="cartBuy(this)">Tiến hành thanh toán</button>
                             </div>
                         </div>
                         
@@ -296,11 +296,17 @@ if(!$logediin){
                             function cartBuy(btn) {
                               var res = btn.value.split("&&");
 
+                              var tongtien = res[2]*document.getElementById(res[3]).value;
+                              var soHD = res[3]; // Using cart ID as invoice number
+
                               document.getElementById("Item_id").value=res[0];
                               document.getElementById("Name").value=res[1];
-                              document.getElementById("Price").value=res[2]*document.getElementById(res[3]).value;
-                              document.getElementById("Cart_id").value=res[3];
+                              document.getElementById("Price").value=tongtien;
+                              document.getElementById("Cart_id").value=soHD;
                               document.getElementById("Quantity").value = document.getElementById(res[3]).value;
+
+                              var qrSrc = "https://img.vietqr.io/image/VCB-1030721718-qr_only.png?amount=" + tongtien + "&addInfo=Thanh toan hoa don " + soHD;
+                              document.getElementById("qrCodeImg").src = qrSrc;
 
                               var FirstName="<?php echo htmlspecialchars($userRow['FirstName'], ENT_QUOTES, 'UTF-8')?>";
                               var LastName="<?php echo htmlspecialchars($userRow['LastName'], ENT_QUOTES, 'UTF-8')?>";
@@ -310,9 +316,9 @@ if(!$logediin){
                               var Phone="<?php echo htmlspecialchars($userRow['Phone'], ENT_QUOTES, 'UTF-8')?>";
 
                               if(FirstName=="" || LastName=="" || AddressLine1=="" || AddressLine2=="" || City=="" || Phone==""){
-                                alert("Plz fill the Shipping deatiles");
+                                alert("Vui lòng điền đầy đủ thông tin giao hàng");
                               }else{
-                                document.getElementById("payhere2").submit(); 
+                                $('#paymentModal').modal('show');
                               }
                             }
                         </script>
@@ -327,7 +333,7 @@ if(!$logediin){
                             <img src="assets/lock.png" width="50px" alt="">
                           </div>
                           <div class="col-10">
-                            <p><i>Payment is securely done By PayHere payment gateway</i></p>
+                            <p><i>Thanh toán được thực hiện an toàn bằng cổng thanh toán PayHere</i></p>
                           </div>
                         </div>
                   </div>
@@ -359,7 +365,7 @@ if(!$logediin){
 
                         <input class="form-control-plaintext" type="text" id="Item_id" name="order_id" value="" hidden>
                         <input class="form-control-plaintext" type="text" id="Name" name="items" value="" hidden>
-                        <input class="form-control-plaintext" type="text" name="currency" value="LKR" hidden>
+                        <input class="form-control-plaintext" type="text" name="currency" value="VND" hidden>
                         <input class="form-control-plaintext" type="text" id="Price" name="amount" value="" hidden>  
                         <input class="form-control-plaintext" type="text" id="Quantity" name="quantity_1" value="" hidden>  
                         <input class="form-control-plaintext" type="text" id="Cart_id" name="custom_1" value="" hidden>  
@@ -371,36 +377,33 @@ if(!$logediin){
                         <input class="form-control-plaintext" type="text" name="address" value="<?php echo htmlspecialchars($userRow['AddressLine1'], ENT_QUOTES, 'UTF-8')?>" hidden>
                         <input class="form-control-plaintext" type="text" name="city" value="<?php echo htmlspecialchars($userRow['City'], ENT_QUOTES, 'UTF-8')?>" hidden>
                         <input class="form-control-plaintext" type="hidden" name="country" value="Sri Lanka" hidden><br><br>  
+                        <input type="hidden" name="payment_method" id="payment_method" value="">
                       </form>
                   <!-- =============================================================================================================================== -->
               </div>
 
             </div>
             <div class="tab-pane fade" id="list-shipping" role="tabpanel" aria-labelledby="list-shipping-list">
-              <br><h1>Update Information</h1><br>
+              <br><h1>Cập nhật thông tin</h1><br>
                   <form id="userUpdate" >
                     <div class="form-group">
-                      <label>Address Line1</label>
-                      <input type="text" class="form-control" name="address" placeholder="Address Line2" required>
-                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                      <label>Địa chỉ 1</label>
+                      <input type="text" class="form-control" name="address" placeholder="Address Line1" value="<?php echo htmlspecialchars($userRow["AddressLine1"], ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
                     <div class="form-group">
-                      <label>Address Line2</label>
-                      <input type="text" class="form-control" name="address2" placeholder="Address Line2" required>
-                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                      <label>Địa chỉ 2</label>
+                      <input type="text" class="form-control" name="address2" placeholder="Address Line2" value="<?php echo htmlspecialchars($userRow["AddressLine2"], ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
                     <div class="form-group">
-                      <label>City</label>
-                      <input type="text" class="form-control" name="city" placeholder="City" required>
-                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                      <label>Thành phố</label>
+                      <input type="text" class="form-control" name="city" placeholder="City" value="<?php echo htmlspecialchars($userRow["City"], ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
                     <div class="form-group">
-                      <label>Phone</label>
-                      <input type="text" class="form-control" name="phone" placeholder="Phone" required>
-                      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                      <label>Điện thoại</label>
+                      <input type="text" class="form-control" name="phone" placeholder="Phone" value="<?php echo htmlspecialchars($userRow["Phone"], ENT_QUOTES, 'UTF-8')?>" required>
                     </div>
                     <input type="text" hidden name="task" value="userUpdate">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                     
                   </form><br><br><br><br><br><br><br>
                   <script>
@@ -410,7 +413,6 @@ if(!$logediin){
                             e.preventDefault();
 
                             const formData = new FormData(this);
-                            const UpformData = new FormData();
 
                             fetch('cart_update.php', {
                                 method:"POST",
@@ -431,13 +433,14 @@ if(!$logediin){
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Image</th>
-                      <th scope="col">ItemName</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">UnitPrice</th>
-                      <th scope="col">TotalAmount</th>
-                      <th scope="col">Date & Time</th>
-                      <th scope="col">DeliveryState</th>
+                      <th scope="col">Hình ảnh</th>
+                      <th scope="col">Tên sản phẩm</th>
+                      <th scope="col">Số lượng</th>
+                      <th scope="col">Đơn giá</th>
+                      <th scope="col">Tổng tiền</th>
+                      <th scope="col">Ngày & Giờ</th>
+                      <th scope="col">Trạng thái giao hàng</th>
+                      <th scope="col">Trạng thái thanh toán</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -461,12 +464,11 @@ if(!$logediin){
                     <tr>
                       <th scope="row"><?=htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8'); ?></th>
                       <td><img src="<?=htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8'); ?>" alt="" height="50px"></td>
-                      <td><?=htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?=htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?php echo htmlspecialchars($row['TotalAmount']/$row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?=htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo number_format($row['TotalAmount']/$row['Quantity'], 0, '', '.') ?> VND</td>
+                      <td><?php echo number_format($row['TotalAmount'], 0, '', '.') ?> VND</td>
                       <td><?=htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Pending</span>";}else{echo "<span class='badge badge-success'>Delivered</span>";}  ?></td>
+                      <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Chưa giải quyết</span>";}else{echo "<span class='badge badge-success'>Đã giao hàng</span>";}  ?></td>
+                      <td><?php if($row['payment_status'] == "unpaid"){echo "<span class='badge badge-danger'>Chưa thanh toán</span>";}else{echo "<span class='badge badge-success'>Đã thanh toán</span>";}  ?></td>
                     </tr>
                     
                         <?php } 
@@ -478,10 +480,11 @@ if(!$logediin){
                       <td><img src="<?=htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8'); ?>" alt="" height="50px"></td>
                       <td><?php echo htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8');echo "<br><i>".htmlspecialchars($row['CPU'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['RAM'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Cooling'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Storage'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Power'], ENT_QUOTES, 'UTF-8');echo "<br>".htmlspecialchars($row['Casing'], ENT_QUOTES, 'UTF-8')."</i>"; ?></td>
                       <td><?=htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?php echo htmlspecialchars($row['TotalAmount']/$row['Quantity'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?=htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo number_format($row['TotalAmount']/$row['Quantity'], 0, '', '.') ?> VND</td>
+                      <td><?php echo number_format($row['TotalAmount'], 0, '', '.') ?> VND</td>
                       <td><?=htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8'); ?></td>
-                      <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Pending</span>";}else{echo "<span class='badge badge-success'>Delivered</span>";}  ?></td>
+                      <td><?php if($row['DeliveryState'] == "pending"){echo "<span class='badge badge-warning'>Chưa giải quyết</span>";}else{echo "<span class='badge badge-success'>Đã giao hàng</span>";}  ?></td>
+                      <td><?php if($row['payment_status'] == "unpaid"){echo "<span class='badge badge-danger'>Chưa thanh toán</span>";}else{echo "<span class='badge badge-success'>Đã thanh toán</span>";}  ?></td>
                     </tr>
 
                         <?php } ?>
@@ -492,25 +495,63 @@ if(!$logediin){
             </div>
             <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">7</div>
             <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-            <br><h1>Settings</h1><br>
+            <br><h1>Cài đặt</h1><br>
             <!-- ======================================================================================================================================================== -->            
-              <h4>Change Name</h4>
+              <h4>Thay đổi tên</h4>
+              <form id="updateNameForm">
+                <div class="form-group">
+                    <label>Tên</label>
+                    <input type="text" name="fname" class="form-control" value="<?php echo htmlspecialchars($userRow["FirstName"], ENT_QUOTES, 'UTF-8')?>">
+                </div>
+                <div class="form-group">
+                    <label>Họ</label>
+                    <input type="text" name="lname" class="form-control" value="<?php echo htmlspecialchars($userRow["LastName"], ENT_QUOTES, 'UTF-8')?>">
+                </div>
+                <input type="text" hidden name="task" value="updateName">
+              <script>
+                        const updateNameForm = document.getElementById('updateNameForm');
+
+                        updateNameForm.addEventListener('submit', function(e){
+                            e.preventDefault();
+
+                            const formData = new FormData(this);
+
+                            fetch('cart_update.php', {
+                                method:"POST",
+                                body: formData
+                            }).then(function (response) {
+                                return response.text();
+                            })
+                            .then(function (data) {
+                                alert(data);
+                                location.reload();
+                            })
+                        })
+                  </script>
+
+
+
             <!-- ======================================================================================================================================================== -->
-              <h4>Change Password</h4>
+              <h4>Thay đổi mật khẩu</h4>
 
               <form id="changePass"> 
                   <div class="form-group">
-                      <label>New Password</label>
+                      <label>Mật khẩu cũ</label>
+                      <input type="password" id="oldPass" name="old_password" class="form-control" value="">
+                      <span id="soldPass" class=""></span>
+                  </div>
+                  <div class="form-group">
+                      <label>Mật khẩu mới</label>
                       <input type="password" id="newPass" name="new_password" class="form-control" value="">
                       <span id="snewPass" class=""></span>
                   </div>
                   <div class="form-group">
-                      <label>Confirm Password</label>
+                      <label>Xác nhận mật khẩu</label>
                       <input type="password" id="confirmPass" name="confirm_password" class="form-control">
                       <span id="sconfirmPass" class=""></span>
                   </div>
                   <div class="form-group">
-                      <input type="submit" class="btn btn-primary" value="Change">
+                      <input type="submit" class="btn btn-primary" value="Thay đổi">
                   </div>
               </form>
 
@@ -530,12 +571,16 @@ if(!$logediin){
                             })
                             .then(function (data) {
                                 const obj = data.split("&&");
-                                document.getElementById("newPass").className = (obj[0] == "" ? 'form-control is-valid' : 'form-control is-invalid');
-                                document.getElementById("snewPass").innerHTML = obj[0];
-                                document.getElementById("confirmPass").className = (obj[1] == "" ? 'form-control is-valid' : 'form-control is-invalid');
-                                document.getElementById("sconfirmPass").innerHTML = obj[1];
-                                if(obj[2]=="done"){
-                                  swal("successfully Updated!", "  ", "success");
+                                document.getElementById("oldPass").className = (obj[0] == "" ? 'form-control is-valid' : 'form-control is-invalid');
+                                document.getElementById("soldPass").innerHTML = obj[0];
+                                document.getElementById("newPass").className = (obj[1] == "" ? 'form-control is-valid' : 'form-control is-invalid');
+                                document.getElementById("snewPass").innerHTML = obj[1];
+                                document.getElementById("confirmPass").className = (obj[2] == "" ? 'form-control is-valid' : 'form-control is-invalid');
+                                document.getElementById("sconfirmPass").innerHTML = obj[2];
+                                if(obj[3]=="done"){
+                                  swal("Cập nhật thành công!", "  ", "success");
+                                  document.getElementById("oldPass").className = 'form-control';
+                                  document.getElementById("oldPass").value = "";
                                   document.getElementById("newPass").className = 'form-control';
                                   document.getElementById("newPass").value = "";
                                   document.getElementById("confirmPass").className = 'form-control';
@@ -546,41 +591,40 @@ if(!$logediin){
                   </script>
 
             <!-- ======================================================================================================================================================== -->
-                          <h4>Shpping Details</h4>
+                          <h4>Chi tiết giao hàng</h4>
 
-                  <form id="userUpdate" >
+                  <form id="userUpdate2" >
                     <div class="form-group">
-                      <label>Address Line1</label>
-                      <input type="text" class="form-control" name="address"  required>
+                      <label>Địa chỉ 1</label>
+                      <input type="text" class="form-control" name="address" value="<?php echo htmlspecialchars($userRow["AddressLine1"], ENT_QUOTES, 'UTF-8')?>"  required>
                       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                     </div>
                     <div class="form-group">
-                      <label>Address Line2</label>
-                      <input type="text" class="form-control" name="address2"  required>
+                      <label>Địa chỉ 2</label>
+                      <input type="text" class="form-control" name="address2" value="<?php echo htmlspecialchars($userRow["AddressLine2"], ENT_QUOTES, 'UTF-8')?>"  required>
                       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                     </div>
                     <div class="form-group">
-                      <label>City</label>
-                      <input type="text" class="form-control" name="city" required>
+                      <label>Thành phố</label>
+                      <input type="text" class="form-control" name="city" value="<?php echo htmlspecialchars($userRow["City"], ENT_QUOTES, 'UTF-8')?>" required>
                       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                     </div>
                     <div class="form-group">
-                      <label>Phone</label>
-                      <input type="text" class="form-control" name="phone"  required>
+                      <label>Điện thoại</label>
+                      <input type="text" class="form-control" name="phone" value="<?php echo htmlspecialchars($userRow["Phone"], ENT_QUOTES, 'UTF-8')?>"  required>
                       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                     </div>
                     <input type="text" hidden name="task" value="userUpdate">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                     
                   </form><br><br><br><br><br><br><br>
                   <script>
-                        const myForm2 = document.getElementById('userUpdate');
+                        const myForm2 = document.getElementById('userUpdate2');
 
                         myForm2.addEventListener('submit', function(e){
                             e.preventDefault();
 
                             const formData = new FormData(this);
-                            const UpformData = new FormData();
 
                             fetch('cart_update.php', {
                                 method:"POST",
@@ -604,6 +648,58 @@ if(!$logediin){
 
   </div>
 
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Chọn phương thức thanh toán</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" value="cash" checked>
+          <label class="form-check-label" for="cashOnDelivery">
+            Thanh toán khi nhận hàng
+          </label>
+        </div>
+        <div class="form-check">
+          <input class_="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="bank">
+          <label class="form-check-label" for="bankTransfer">
+            Chuyển khoản ngân hàng
+          </label>
+        </div>
+        <div id="qrCodeContainer" style="display: none; text-align: center; margin-top: 20px;">
+            <img id="qrCodeImg" src="" alt="QR Thanh toán">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" onclick="confirmPayment()">Xác nhận thanh toán</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+function confirmPayment() {
+    var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+    document.getElementById('payment_method').value = paymentMethod;
+    document.getElementById('payhere2').submit();
+}
+</script>
+
+<script>
+$('input[type=radio][name=paymentMethod]').change(function() {
+    if (this.value == 'bank') {
+        $('#qrCodeContainer').show();
+    }
+    else if (this.value == 'cash') {
+        $('#qrCodeContainer').hide();
+    }
+});
+</script>
 </body>
 </html>

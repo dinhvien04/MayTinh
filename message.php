@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style/owl.carousel.min.css">
     <link rel="stylesheet" href="style/owl.theme.default.min.css">
 
-    <title>Horizon Computers</title>
+    <title>Vien Computers</title>
 
         <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -14,6 +14,7 @@
             <th scope="col">Ngày & Giờ</th>
             <th scope="col">Khách hàng</th>
             <th scope="col">Trạng thái giao hàng</th>
+            <th scope="col">Trạng thái thanh toán</th>
             </tr>
         </thead>
         <tbody id="showtable">
@@ -40,8 +41,8 @@
     }
     function delivery(id){
         swal({
-            title: "Are you sure?",
-            text: "Once Changed, you will not be able to undo !",
+            title: "Bạn có chắc không?",
+            text: "Một khi đã thay đổi, bạn sẽ không thể hoàn tác!",
             icon: "warning",
             dangerMode: true,
             buttons: true,
@@ -59,7 +60,7 @@
                         return response.text();
                     })
                     .then(function (data) {
-                        swal("Done!", data, "success");
+                        swal("Xong!", data, "success");
                         showtable();
                     })
             } else {
@@ -81,5 +82,35 @@
             .then(function (data) {
                 document.getElementById('showtable').innerHTML = data;
             })
+    }
+    function payment(id){
+        swal({
+            title: "Bạn có chắc không?",
+            text: "Một khi đã thay đổi, bạn sẽ không thể hoàn tác!",
+            icon: "warning",
+            dangerMode: true,
+            buttons: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                const formDataPayment = new FormData();
+                formDataPayment.append("ID", id);
+                formDataPayment.append("task", "payment");
+
+                fetch('admin_actions.php', {
+                        method:"POST",
+                        body: formDataPayment
+                    }).then(function (response) {
+                        return response.text();
+                    })
+                    .then(function (data) {
+                        swal("Xong!", data, "success");
+                        showtable();
+                    })
+            } else {
+                
+            }
+            });
+
     }
 </script>

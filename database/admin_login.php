@@ -1,6 +1,10 @@
 <?php
 // Initialize the session
 session_start();
+
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["ADMINloggedin"]) && $_SESSION["ADMINloggedin"] === true){
@@ -19,16 +23,17 @@ $username_err = $password_err = $login_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+    if(empty(trim($_POST["username"]))){ 
+        $username_err = "Vui lòng nhập tên người dùng.";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
+    if(empty(trim($_POST["password"]))){ 
+        $password_err = "Vui lòng nhập mật khẩu của bạn.";
+    }
+    else{
         $password = trim($_POST["password"]);
     }
     
@@ -66,15 +71,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: ../admin/admin_dashboard.php");
                         } else{
                             // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
+                            $login_err = "Tên người dùng hoặc mật khẩu không hợp lệ.";
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
+                    $login_err = "Tên người dùng hoặc mật khẩu không hợp lệ.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Rất tiếc! Đã xảy ra lỗi. Vui lòng thử lại sau.";
             }
 
             // Close statement

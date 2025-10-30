@@ -245,49 +245,113 @@ function update_product($link, $post_data) {
 }
 
 function get_orders($link) {
+
     $sql = "SELECT orders.*, products.Image, products.Name FROM orders INNER JOIN products ON orders.ItemID = products.ID;";
+
     $sql2 = "SELECT orders.*, custompc.Name, custompc.CPU, custompc.MotherBoard, custompc.GPU, custompc.RAM, custompc.Cooling, custompc.Storage, custompc.Power, custompc.Casing, custompc.Image FROM orders INNER JOIN custompc ON orders.ItemID = custompc.ID;";
 
+
+
     $result = mysqli_query($link, $sql);
+
     $result2 = mysqli_query($link, $sql2);
+
+
 
     $output = "";
 
+
+
     while($row = mysqli_fetch_assoc($result)){
-        if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Pending</span>";}else{$show = "<span class='badge badge-success'>Delivered</span>";}
+
+        if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Chưa giải quyết</span>";}else{$show = "<span class='badge badge-success'>Đã giao hàng</span>";}
+
+        if($row['payment_status'] == "unpaid"){$payment_show = "<span class='badge badge-danger'>Chưa thanh toán</span>";}else{$payment_show = "<span class='badge badge-success'>Đã thanh toán</span>";}
+
         $output.='
+
                 <tr>
+
                 <th scope="row">'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'</th>
+
                 <td><img src="'.htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8').'" alt="" height="50px"></td>
+
                 <td>'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars(($row['TotalAmount']/$row['Quantity']), ENT_QUOTES, 'UTF-8') .'</td>
+
                 <td>'.htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td onclick="userinformation(\''.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'\')">'.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'</td>
-                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Delivered</button></td>
+
+                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Đã giao hàng</button></td>
+
+                <td>'.$payment_show.'<button onclick="payment(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Đã thanh toán</button></td>
+
                 </tr>
+
                 ';
+
     } 
 
+
+
     while($row = mysqli_fetch_assoc($result2)){
-            if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Pending</span>";}else{$show = "<span class='badge badge-success'>Delivered</span>";}
+
+            if($row['DeliveryState'] == "pending"){$show = "<span class='badge badge-warning'>Chưa giải quyết</span>";}else{$show = "<span class='badge badge-success'>Đã giao hàng</span>";}
+
+            if($row['payment_status'] == "unpaid"){$payment_show = "<span class='badge badge-danger'>Chưa thanh toán</span>";}else{$payment_show = "<span class='badge badge-success'>Đã thanh toán</span>";}
+
             $output.='
+
                 <tr>
+
                 <th scope="row">'.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'</th>
+
                 <td><img src="'.htmlspecialchars($row['Image'], ENT_QUOTES, 'UTF-8').'" alt="" height="50px"></td>
-                <td>'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'"<br><i>"'.htmlspecialchars($row['CPU'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['RAM'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Cooling'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Storage'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Power'], ENT_QUOTES, 'UTF-8').' "<br>"'.htmlspecialchars($row['Casing'], ENT_QUOTES, 'UTF-8')."</i>".'</td>
+
+                <td>'.htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8').'"<br><i>"'
+
+.htmlspecialchars($row['CPU'], ENT_QUOTES, 'UTF-8').' "<br>"'
+
+.htmlspecialchars($row['RAM'], ENT_QUOTES, 'UTF-8').' "<br>"'
+
+.htmlspecialchars($row['Cooling'], ENT_QUOTES, 'UTF-8').' "<br>"'
+
+.htmlspecialchars($row['Storage'], ENT_QUOTES, 'UTF-8').' "<br>"'
+
+.htmlspecialchars($row['Power'], ENT_QUOTES, 'UTF-8').' "<br>"'
+
+.htmlspecialchars($row['Casing'], ENT_QUOTES, 'UTF-8')."</i>".'</td>
+
                 <td>'.htmlspecialchars($row['Quantity'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars(($row['TotalAmount']/$row['Quantity']), ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars($row['TotalAmount'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td>'.htmlspecialchars($row['Date'], ENT_QUOTES, 'UTF-8').'</td>
+
                 <td onclick="userinformation(\''.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'\')">'.htmlspecialchars($row['CustomerEmail'], ENT_QUOTES, 'UTF-8').'</td>
-                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Delivered</button></td>
+
+                <td>'.$show.'<button onclick="delivery(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Đã giao hàng</button></td>
+
+                <td>'.$payment_show.'<button onclick="payment(\''.htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8').'\')">Đã thanh toán</button></td>
+
                 </tr>
+
             ';
+
     } 
+
     
+
     return $output;
+
 }
 
 function get_customer_info($link, $email) {

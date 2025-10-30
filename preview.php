@@ -158,7 +158,15 @@
                                                             window.location.replace("database/login.php");
                                                         }
                                                         else if(data=="ok"){
-                                                            alert("Sản phẩm đã được thêm vào giỏ hàng");
+                                                            Swal.fire({
+                                                              icon: 'success',
+                                                              title: 'Thành công!',
+                                                              text: 'Sản phẩm đã được thêm vào giỏ hàng!',
+                                                            }).then((result) => {
+                                                              if (result.isConfirmed) {
+                                                                window.location.href = "account.php#list-cart";
+                                                              }
+                                                            })
                                                         }
                                                         else{
                                                             console.log(data);

@@ -52,5 +52,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo admin_update($link, $_SESSION["ADMINid"], $_POST['FirstName'], $_POST['LastName']);
     }
 
+    if($_POST['task'] == "payment"){
+        $ID = $_POST['ID'];
+        $sql = "UPDATE orders SET payment_status='paid' WHERE ID=?";
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $ID);
+        if(mysqli_stmt_execute($stmt)) {
+            echo "Cập nhật thành công";
+        }
+        else{
+            echo mysqli_error($link);
+        }
+    }
+
 }
 ?>
